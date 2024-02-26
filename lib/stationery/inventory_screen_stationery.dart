@@ -21,6 +21,11 @@ class InventoryScreenStationeryState extends State<InventoryScreenStationery> {
   ItemStock? pencilStock;
   ItemStock? booksStock;
   String savingStatus = 'Saved';
+  static const List<ItemStock> _stock = [
+    ItemStock.high,
+    ItemStock.medium,
+    ItemStock.low,
+  ];
 
   @override
   initState() {
@@ -32,7 +37,7 @@ class InventoryScreenStationeryState extends State<InventoryScreenStationery> {
     penStock = await getInventory(VendorType.pen);
     pencilStock = await getInventory(VendorType.pencil);
     booksStock = await getInventory(VendorType.books);
-    setState((){});
+    setState(() {});
   }
 
   void onChangePen(ItemStock? newValue) async {
@@ -68,10 +73,10 @@ class InventoryScreenStationeryState extends State<InventoryScreenStationery> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    if(savingStatus != 'Saved'){
+    if (savingStatus != 'Saved') {
       return const Saving();
     }
-    if(penStock == null || pencilStock == null || booksStock == null) {
+    if (penStock == null || pencilStock == null || booksStock == null) {
       return const Loading();
     }
     return Scaffold(
@@ -92,14 +97,122 @@ class InventoryScreenStationeryState extends State<InventoryScreenStationery> {
         child: Column(
           children: [
             const SizedBox(height: 80),
-            CustomDropDownMenu(
-                onChange: onChangePen, vendorType: VendorType.pen),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Pen Stock',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+                const SizedBox(width: 60),
+                DropdownButton<ItemStock>(
+                  value: penStock,
+                  onChanged: (ItemStock? newValue) {
+                    setState(() {
+                      penStock = newValue ?? penStock;
+                    });
+                  },
+                  items: _stock
+                      .map<DropdownMenuItem<ItemStock>>((ItemStock value) {
+                    return DropdownMenuItem<ItemStock>(
+                      value: value,
+                      child: Text(value.text),
+                    );
+                  }).toList(),
+                  borderRadius: BorderRadius.circular(10),
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 40),
-            CustomDropDownMenu(
-                onChange: onChangePencil, vendorType: VendorType.pencil),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Pencil Stock',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+                const SizedBox(width: 60),
+                DropdownButton<ItemStock>(
+                  value: pencilStock,
+                  onChanged: (ItemStock? newValue) {
+                    setState(() {
+                      pencilStock = newValue ?? pencilStock;
+                    });
+                  },
+                  items: _stock
+                      .map<DropdownMenuItem<ItemStock>>((ItemStock value) {
+                    return DropdownMenuItem<ItemStock>(
+                      value: value,
+                      child: Text(value.text),
+                    );
+                  }).toList(),
+                  borderRadius: BorderRadius.circular(10),
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 40),
-            CustomDropDownMenu(
-                onChange: onChangeBooks, vendorType: VendorType.books),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Books Stock',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+                const SizedBox(width: 60),
+                DropdownButton<ItemStock>(
+                  value: booksStock,
+                  onChanged: (ItemStock? newValue) {
+                    setState(() {
+                      booksStock = newValue ?? booksStock;
+                    });
+                  },
+                  items: _stock
+                      .map<DropdownMenuItem<ItemStock>>((ItemStock value) {
+                    return DropdownMenuItem<ItemStock>(
+                      value: value,
+                      child: Text(value.text),
+                    );
+                  }).toList(),
+                  borderRadius: BorderRadius.circular(10),
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 40),
             CustomButton(text: 'Save', onPressed: setData, size: size),
           ],
