@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "170472101100",
+    "project_id": "stationery-fccfd",
+    "storage_bucket": "stationery-fccfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170472101100:android:84522f959ace68cfeec1c9",
+        "android_client_info": {
+          "package_name": "com.example.stationery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfEA0wp9OOkd6EvsStKyho0ce6hoSlbSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
