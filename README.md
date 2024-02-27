@@ -9,9 +9,9 @@ This Flutter app allows users to manage inventory items, register new users, and
 - Real-time Updates: Changes to item stock levels are instantly reflected on the respective vendor's devices.
 
 ## Explanation Video
-1. Clone the repo
    ```sh
-   https://drive.google.com/file/d/1Xjf2VRpubIl66LbBar2n5jl25u3eNepf/view?usp=sharing
+   https://drive.google.com/file/d/1Xjf2VRpubIl66LbBar2n5jl25u3eNepf/view
+   ```
 
 ## Codebase Breakdown
 
