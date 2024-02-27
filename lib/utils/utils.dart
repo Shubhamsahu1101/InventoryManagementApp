@@ -1,24 +1,30 @@
-// import 'dart:io';
 import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:stationery/utils/colors.dart';
 
 void showSnackBar({required BuildContext context, required String content}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(content)));
 }
 
-// Future<File?> pickImageFromGallery(BuildContext context) async {
-//   File? image;
-//   try {
-//     final pickedImage =
-//         await ImagePicker().pickImage(source: ImageSource.gallery);
-//     if (pickedImage != null) {
-//       image = File(pickedImage.path);
-//     }
-//   } catch (e) {
-//     showSnackBar(context: context, content: e.toString());
-//   }
-//   return image;
-// }
+void showAlertDialog({required BuildContext context, required String content}) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        backgroundColor: appBarColor,
+        content: Text(
+          content,
+          style: const TextStyle(color: textColor),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
 
 void push({required BuildContext context, required dynamic screen}) {
   Navigator.push(

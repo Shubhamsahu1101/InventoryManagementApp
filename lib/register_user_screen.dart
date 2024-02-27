@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:stationery/register_user_screen.dart';
 import 'package:stationery/repositories/auth_repository.dart';
 import 'package:stationery/utils/colors.dart';
 import 'package:stationery/utils/custom_button.dart';
-import 'package:stationery/models/vendor_type.dart';
-import 'package:stationery/utils/utils.dart';
 
-class LoginScreenVendor extends StatelessWidget {
+class RegisterUserScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final VendorType vendorType;
-  LoginScreenVendor({super.key, required this.vendorType});
+  final String userType;
+  RegisterUserScreen({super.key, required this.userType});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class LoginScreenVendor extends StatelessWidget {
         backgroundColor: appBarColor,
         surfaceTintColor: appBarColor,
         title: const Text(
-          'Vendor Login',
+          'Register User',
           style: TextStyle(
             fontSize: 30,
             color: textColor,
@@ -35,12 +32,6 @@ class LoginScreenVendor extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: size.height / 18),
-            Text(
-              '${vendorType.text} Vendor',
-              style: const TextStyle(
-                  fontSize: 32, color: textColor, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: size.height / 30),
             TextFormField(
               controller: emailController,
               decoration: InputDecoration(
@@ -72,44 +63,12 @@ class LoginScreenVendor extends StatelessWidget {
             ),
             SizedBox(height: size.height / 80),
             CustomButton(
-              text: 'Login',
+              text: 'Register',
               onPressed: () {
-                signInWithEmailAndPassword(context, emailController.text,
-                    passwordController.text, '${vendorType.text} Vendor');
+                createUserWithEmailAndPassword(context, emailController.text,
+                    passwordController.text, userType);
               },
               size: size,
-            ),
-            SizedBox(height: size.height / 80),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Don\'t have an account? ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: textColor,
-                    fontSize: 18,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    push(
-                      context: context,
-                      screen: () => RegisterUserScreen(
-                        userType: '${vendorType.text} Vendor',
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ],
         ),

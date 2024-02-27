@@ -3,11 +3,11 @@ import 'package:stationery/stationery/login_screen_stationery.dart';
 import 'package:stationery/utils/colors.dart';
 import 'package:stationery/utils/custom_button.dart';
 import 'package:stationery/utils/utils.dart';
-import 'package:stationery/vendor/login_screen_vendor.dart';
 import 'package:stationery/models/vendor_type.dart';
+import 'package:stationery/vendor/login_screen_vendor.dart';
 
-class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
+class LandingScreen extends StatelessWidget {
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class LandingPage extends StatelessWidget {
         surfaceTintColor: appBarColor,
         centerTitle: true,
         title: const Text(
-          'Stationery Management',
+          'Inventory Management',
           style: TextStyle(
             fontSize: 30,
             color: textColor,
@@ -35,7 +35,7 @@ class LandingPage extends StatelessWidget {
               text: 'Subhash Stationery',
               onPressed: () => push(
                 context: context,
-                screen: () => LoginPageStationery(stationeryName: 'Subhash'),
+                screen: () => LoginScreenStationery(stationeryName: 'Subhash'),
               ),
               size: size,
             ),
@@ -44,7 +44,7 @@ class LandingPage extends StatelessWidget {
               text: 'Pen Vendor',
               onPressed: () => push(
                 context: context,
-                screen: () => LoginPageVendor(vendorType: VendorType.pen),
+                screen: () => LoginScreenVendor(vendorType: VendorType.pen),
               ),
               size: size,
             ),
@@ -53,7 +53,7 @@ class LandingPage extends StatelessWidget {
               text: 'Pencil Vendor',
               onPressed: () => push(
                 context: context,
-                screen: () => LoginPageVendor(vendorType: VendorType.pencil),
+                screen: () => LoginScreenVendor(vendorType: VendorType.pencil),
               ),
               size: size,
             ),
@@ -62,7 +62,7 @@ class LandingPage extends StatelessWidget {
               text: 'Books Vendor',
               onPressed: () => push(
                 context: context,
-                screen: () => LoginPageVendor(vendorType: VendorType.books),
+                screen: () => LoginScreenVendor(vendorType: VendorType.books),
               ),
               size: size,
             ),

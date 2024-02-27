@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:stationery/inventory_repository.dart';
+import 'package:stationery/repositories/auth_repository.dart';
+import 'package:stationery/repositories/inventory_repository.dart';
 import 'package:stationery/models/item_stock.dart';
 import 'package:stationery/models/vendor_type.dart';
 import 'package:stationery/utils/colors.dart';
 import 'package:stationery/utils/custom_button.dart';
-import 'package:stationery/utils/custom_dropdownmenu.dart';
 import 'package:stationery/utils/loading.dart';
 import 'package:stationery/utils/saving.dart';
 
@@ -92,6 +92,14 @@ class InventoryScreenStationeryState extends State<InventoryScreenStationery> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              logOut(context);
+            },
+            icon: const Icon(Icons.logout, color: textColor, size: 30),
+          ),
+        ],
       ),
       body: Center(
         child: Column(

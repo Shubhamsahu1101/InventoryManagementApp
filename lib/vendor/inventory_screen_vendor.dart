@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stationery/inventory_repository.dart';
+import 'package:stationery/repositories/auth_repository.dart';
+import 'package:stationery/repositories/inventory_repository.dart';
 import 'package:stationery/models/vendor_type.dart';
 import 'package:stationery/utils/colors.dart';
 
@@ -28,6 +29,14 @@ class _InventoryScreenVendorState extends State<InventoryScreenVendor> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              logOut(context);
+            },
+            icon: const Icon(Icons.logout, color: textColor, size: 30),
+          ),
+        ],
       ),
       body: Center(
         child: Row(

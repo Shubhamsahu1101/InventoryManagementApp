@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:stationery/stationery/inventory_screen_stationery.dart';
+import 'package:stationery/register_user_screen.dart';
+import 'package:stationery/repositories/auth_repository.dart';
 import 'package:stationery/utils/colors.dart';
 import 'package:stationery/utils/custom_button.dart';
 import 'package:stationery/utils/utils.dart';
 
-class LoginPageStationery extends StatelessWidget {
+class LoginScreenStationery extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final String stationeryName;
-  LoginPageStationery({super.key, required this.stationeryName});
+  LoginScreenStationery({super.key, required this.stationeryName});
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +73,42 @@ class LoginPageStationery extends StatelessWidget {
             CustomButton(
               text: 'Login',
               onPressed: () {
-                push(
-                    context: context,
-                    screen: () => const InventoryScreenStationery());
+                signInWithEmailAndPassword(context, emailController.text,
+                    passwordController.text, 'Store');
               },
               size: size,
+            ),
+            SizedBox(height: size.height / 80),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Don\'t have an account? ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                    fontSize: 18,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    push(
+                      context: context,
+                      screen: () => RegisterUserScreen(
+                        userType: 'Store',
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
