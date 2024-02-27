@@ -13,7 +13,7 @@ This Flutter app allows users to manage inventory items, register new users, and
    https://drive.google.com/file/d/1Xjf2VRpubIl66LbBar2n5jl25u3eNepf/view
    ```
 
-## Codebase Breakdown
+## Codebase Breakdown for the lib folder
 
 1. **models:** Contains enum data types (`ItemStock`, `VendorType`) used in the application.
 
