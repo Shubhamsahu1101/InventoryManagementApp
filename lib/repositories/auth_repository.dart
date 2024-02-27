@@ -35,17 +35,17 @@ void createUserWithEmailAndPassword(BuildContext context, String emailAddress,
         showAlertDialog(
             context: context, content: 'The password provided is too weak.');
       }
-      print('The password provided is too weak.');
     } else if (e.code == 'email-already-in-use') {
       if (context.mounted) {
         showAlertDialog(
             context: context,
             content: 'The account already exists for that email.');
       }
-      print('The account already exists for that email.');
     }
   } catch (e) {
-    print(e);
+    if (context.mounted) {
+      showAlertDialog(context: context, content: e.toString());
+    }
   }
 }
 
@@ -60,7 +60,8 @@ void signInWithEmailAndPassword(BuildContext context, String emailAddress,
       if (loginUserType != userType) {
         if (context.mounted) {
           showAlertDialog(
-              context: context, content: 'You are not authorized as a $userType');
+              context: context,
+              content: 'You are not authorized as a $userType');
           await auth.signOut();
         }
         return;
@@ -76,14 +77,12 @@ void signInWithEmailAndPassword(BuildContext context, String emailAddress,
         showAlertDialog(
             context: context, content: 'No user found for that email.');
       }
-      print('No user found for that email.');
     } else if (e.code == 'wrong-password') {
       if (context.mounted) {
         showAlertDialog(
             context: context,
             content: 'Wrong password provided for that user.');
       }
-      print('Wrong password provided for that user.');
     } else {
       if (context.mounted) {
         showAlertDialog(
