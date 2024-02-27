@@ -8,6 +8,11 @@ This Flutter app allows users to manage inventory items, register new users, and
 - Inventory Management: Users can update stock levels for each item in the inventory.
 - Real-time Updates: Changes to item stock levels are instantly reflected on the respective vendor's devices.
 
+## Explanation Video
+1. Clone the repo
+   ```sh
+   https://drive.google.com/file/d/1Xjf2VRpubIl66LbBar2n5jl25u3eNepf/view?usp=sharing
+
 ## Codebase Breakdown
 
 1. **models:** Contains enum data types (`ItemStock`, `VendorType`) used in the application.
